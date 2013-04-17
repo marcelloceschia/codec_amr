@@ -195,12 +195,12 @@ int amr_format_get_samples(const struct ast_frame *f){
 	}
 	return samples;
 }
-int amr_format_get_rate(const struct ast_frame *f){
-	if (!(ast_format_isset(&f->subclass.format, AMR_ATTR_KEY_SAMP_RATE, 24000, AST_FORMAT_ATTR_END))) {
+int amr_format_get_rate(const struct ast_format *format){
+	if (!(ast_format_isset(format, AMR_ATTR_KEY_SAMP_RATE, 24000, AST_FORMAT_ATTR_END))) {
 		return 24000;
-	} else if (!(ast_format_isset(&f->subclass.format, AMR_ATTR_KEY_SAMP_RATE, 16000, AST_FORMAT_ATTR_END))) {
+	} else if (!(ast_format_isset(format, AMR_ATTR_KEY_SAMP_RATE, 16000, AST_FORMAT_ATTR_END))) {
 		return 16000;
-	} else if (!(ast_format_isset(&f->subclass.format, AMR_ATTR_KEY_SAMP_RATE, 12000, AST_FORMAT_ATTR_END))) {
+	} else if (!(ast_format_isset(format, AMR_ATTR_KEY_SAMP_RATE, 12000, AST_FORMAT_ATTR_END))) {
 		return 12000;
 	} else {
 		return 8000;
